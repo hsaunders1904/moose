@@ -269,12 +269,12 @@ CoefficientManager::resolveCoefficientVariant(const InputParameters & params,
   }
   if (params.isParamSetByUser(matrix))
   {
-    return getMatrixCoefficient(params.get<MFEMMatrixCoefficientName>(matrix));
+    return _matrix_coeffs.getCoefficient(matrix);
   }
   // If no parameters have been set, we assume a default scalar value is set.
   if (params.isParamValid(scalar))
   {
-    return getScalarCoefficient(params.get<MFEMScalarCoefficientName>(scalar));
+    return _scalar_coeffs.getCoefficient(scalar);
   }
   mooseError("No valid coefficient found with parameter names ",
              std::quoted(scalar),
